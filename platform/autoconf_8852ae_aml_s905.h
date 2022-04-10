@@ -1,0 +1,20 @@
+#ifdef CONFIG_PLATFORM_AML_S905
+
+/* Core Config */
+#ifndef CONFIG_PHL_USE_KMEM_ALLOC
+#define CONFIG_PHL_USE_KMEM_ALLOC
+#endif
+
+#ifdef CONFIG_DYNAMIC_RX_BUF
+#undef CONFIG_DYNAMIC_RX_BUF
+#endif
+
+#define CONFIG_RXBUF_NUM_1024
+#define CONFIG_TX_SKB_ORPHAN
+#define CONFIG_SWCAP_SYNC_WIN
+
+/* PHL Config */
+#define PHL_RX_BATCH_IND
+#define RTW_WKARD_98D_RXTAG
+
+#endif
