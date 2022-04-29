@@ -2,7 +2,7 @@
 ## Introduction
 This code is cloned from [TinkerBoard2/kernel](https://github.com/TinkerBoard2/kernel) and it's author is Rock_Shen (rock_shen@asus.com).  
 The default compilation option is i386_PC For Linux, you can also change the compilation options of MAKEFILE in line149.  
-## Build
+## Build(for kernel < 5.15)
 ```
 Turn off your Security Boot in BIOS
 
@@ -10,6 +10,18 @@ git clone https://github.com/HRex39/rtl8852be.git
 make -j8
 sudo make install
 ```
+
+## Build(for kernel >= 5.15)[not stable]
+```
+Turn off your Security Boot in BIOS
+
+git clone https://github.com/HRex39/rtl8852be.git -b dev-linux5.17
+make -j8
+sudo make install
+```
+according to this [issue](https://github.com/HRex39/rtl8852be/issues/1#issuecomment-1113270944), the new branch seems not really stable, but hardware seems to work just fine.   
+Expect more tests or feedback.  
+
 ## WHAT IS LINUX?
 ```
 WHAT IS LINUX?
