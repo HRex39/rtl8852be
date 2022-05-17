@@ -2,6 +2,12 @@
 ## Introduction
 This code is cloned from [TinkerBoard2/kernel](https://github.com/TinkerBoard2/kernel) and it's author is Rock_Shen (rock_shen@asus.com).  
 The default compilation option is i386_PC For Linux, you can also change the compilation options of MAKEFILE in line149.  
+## Prerequisites
+```
+build-essential 
+linux-headers
+bc
+```
 ## Build(for kernel < 5.15)
 ```
 Turn off your Security Boot in BIOS
