@@ -4,7 +4,8 @@
 ![github](https://img.shields.io/badge/-Ubuntu_22.04_LTS-555555.svg?style=for-the-badge&logo=ubuntu)![github](https://img.shields.io/badge/dev--linux5.17-success-brightgreen.svg?style=for-the-badge)  
 ![github](https://img.shields.io/badge/-Arch_Linux-555555.svg?style=for-the-badge&logo=archlinux)![github](https://img.shields.io/badge/dev--linux5.17-success-brightgreen.svg?style=for-the-badge)   
 ![github](https://img.shields.io/badge/-Others-555555.svg?style=for-the-badge&logo=linux&logoColor=ffffff)![github](https://img.shields.io/badge/dev--linux5.17-test--pending-lightgrey.svg?style=for-the-badge)   
-![github](https://img.shields.io/badge/-bluetooth_unsupported🤡-red.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)
+![github](https://img.shields.io/badge/-bluetooth_unsupported🤡-red.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)  
+![github](https://img.shields.io/badge/Kernel>=5.18-test--pending-red.svg?style=for-the-badge&logo=linux&logoColor=ffffff)
 
 ## Introduction
 This code is cloned from [TinkerBoard2/kernel](https://github.com/TinkerBoard2/kernel) and it's author is Rock_Shen (rock_shen@asus.com).  
