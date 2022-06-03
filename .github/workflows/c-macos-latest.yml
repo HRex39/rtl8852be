@@ -1,0 +1,17 @@
+name: C/C++ Macos-Latest CI
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "Unix Kernel is $(uname -r)"
+    - name: make
+      run: make -j4
