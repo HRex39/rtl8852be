@@ -3,7 +3,10 @@
 ![github](https://img.shields.io/badge/Kernel>=5.18-test--pending-red.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
 ![github](https://img.shields.io/badge/-bluetooth_unsupported-lightgrey.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)  
 ## LTS
-![github](https://img.shields.io/badge/-Ubuntu-555555.svg?style=for-the-badge&logo=ubuntu&logoColor=E95420)
+![github](https://img.shields.io/badge/-Ubuntu-555555.svg?style=for-the-badge&logo=ubuntu&logoColor=E95420)  
+Support CI/CD based on Github-hosted runners: Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04.  
+Especially for Arch Linux, You can test for yourself or refer to issues.  
+💀:the dev is overwhelmed.  
 ## Unstable
 ![github](https://img.shields.io/badge/-Debian-555555.svg?style=for-the-badge&logo=debian)
 ![github](https://img.shields.io/badge/-Centos-555555.svg?style=for-the-badge&logo=centos)
@@ -18,7 +21,7 @@ build-essential
 linux-headers
 bc
 ```
-## Build(for kernel < 5.18)
+## Build(for kernel < 5.18)[stable]
 ```
 Turn off your Security Boot in BIOS
 
@@ -27,7 +30,7 @@ make -j8
 sudo make install
 ```
 
-## Build(for kernel >= 5.18)[testing]
+## Build(for kernel >= 5.18)[pending]
 ```
 Turn off your Security Boot in BIOS
 
