@@ -2,7 +2,7 @@ name: C/C++ Ubuntu-22.04 CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ dev ]
 
 jobs:
   build:
