@@ -499,6 +499,7 @@ static struct dvobj_priv *pci_dvobj_init(struct pci_dev *pdev,
 	}
 
 #ifdef CONFIG_64BIT_DMA
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	if (!pci_set_dma_mask(pdev, DMA_BIT_MASK(64))) {
 		RTW_INFO("RTL819xCE: Using 64bit DMA\n");
 		err = pci_set_consistent_dma_mask(pdev, DMA_BIT_MASK(64));
@@ -507,9 +508,23 @@ static struct dvobj_priv *pci_dvobj_init(struct pci_dev *pdev,
 			goto disable_picdev;
 		}
 		pci_data->bdma64 = _TRUE;
-	} else
+	} 
+	else
+#else
+	if (!dma_set_mask(&pdev->dev, DMA_BIT_MASK(64))) {
+		RTW_INFO("RTL819xCE: Using 64bit DMA\n");
+		err = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(64));
+		if (err != 0) {
+			RTW_ERR("Unable to obtain 64bit DMA for consistent allocations\n");
+			goto disable_picdev;
+		}
+		pci_data->bdma64 = _TRUE;
+	} 
+	else
+#endif
 #endif
 	{
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 		if (!pci_set_dma_mask(pdev, DMA_BIT_MASK(32))) {
 			err = pci_set_consistent_dma_mask(pdev, DMA_BIT_MASK(32));
 			if (err != 0) {
@@ -517,6 +532,15 @@ static struct dvobj_priv *pci_dvobj_init(struct pci_dev *pdev,
 				goto disable_picdev;
 			}
 		}
+#else
+		if (!dma_set_mask(&pdev->dev, DMA_BIT_MASK(32))) {
+			err = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32));
+			if (err != 0) {
+				RTW_ERR("Unable to obtain 32bit DMA for consistent allocations\n");
+				goto disable_picdev;
+			}
+		}
+#endif
 	}
 
 	pci_set_master(pdev);

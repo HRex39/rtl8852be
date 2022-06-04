@@ -16,6 +16,13 @@
 #define _PLTFM_OPS_LINUX_H_
 #include "drv_types.h"
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 18, 0)
+#define PCI_DMA_BIDIRECTIONAL	DMA_BIDIRECTIONAL
+#define PCI_DMA_TODEVICE	DMA_TO_DEVICE
+#define PCI_DMA_FROMDEVICE	DMA_FROM_DEVICE
+#define PCI_DMA_NONE		DMA_NONE
+#endif
+
 static inline char *_os_strpbrk(const char *s, const char *ct)
 {
 	return strpbrk(s, ct);
@@ -187,7 +194,11 @@ static inline void *_os_pkt_buf_unmap_rx(void *d, _dma bus_addr_l, _dma bus_addr
 #endif /*CONFIG_PCI_HCI*/
 
 #ifdef CONFIG_PCI_HCI
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	pci_unmap_single(pdev, bus_addr_l, buf_sz, PCI_DMA_FROMDEVICE);
+#else
+	dma_unmap_single(&pdev->dev, bus_addr_l, buf_sz, DMA_FROM_DEVICE);
+#endif
 #endif
 
 #ifdef RTW_CORE_RECORD
@@ -205,7 +216,11 @@ static inline void *_os_pkt_buf_map_rx(void *d, _dma *bus_addr_l, _dma *bus_addr
 	struct pci_dev *pdev = pci_data->ppcidev;
 	struct sk_buff *skb = os_priv;
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	*bus_addr_l = pci_map_single(pdev, skb->data, buf_sz, PCI_DMA_FROMDEVICE);
+#else
+	*bus_addr_l = dma_map_single(&pdev->dev, skb->data, buf_sz, DMA_FROM_DEVICE);
+#endif
 	/* *bus_addr_h = NULL;*/
 #endif /*CONFIG_PCI_HCI*/
 
@@ -233,7 +248,11 @@ static inline void *_os_pkt_buf_alloc_rx(void *d, _dma *bus_addr_l,
 
 	skb_pull(skb, PHL_RX_HEADROOM);
 #ifdef CONFIG_PCI_HCI
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	*bus_addr_l = pci_map_single(pdev, skb->data, rxbuf_size, PCI_DMA_FROMDEVICE);
+#else
+	*bus_addr_l = dma_map_single(&pdev->dev, skb->data, buf_sz, DMA_FROM_DEVICE);
+#endif
 	/* *bus_addr_h = NULL;*/
 #endif /*CONFIG_PCI_HCI*/
 	*os_priv = skb;
@@ -252,7 +271,11 @@ static inline void _os_pkt_buf_free_rx(void *d, u8 *vir_addr, _dma bus_addr_l,
 	struct sk_buff *skb = (struct sk_buff *)os_priv;
 
 #ifdef CONFIG_PCI_HCI
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	pci_unmap_single(pdev, bus_addr_l, buf_sz, PCI_DMA_FROMDEVICE);
+#else
+	dma_unmap_single(&pdev->dev, bus_addr_l, buf_sz, DMA_FROM_DEVICE);
+#endif
 #endif /*CONFIG_PCI_HCI*/
 	rtw_skb_free(skb);
 }
