@@ -251,7 +251,7 @@ static inline void *_os_pkt_buf_alloc_rx(void *d, _dma *bus_addr_l,
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 18, 0)
 	*bus_addr_l = pci_map_single(pdev, skb->data, rxbuf_size, PCI_DMA_FROMDEVICE);
 #else
-	*bus_addr_l = dma_map_single(&pdev->dev, skb->data, buf_sz, DMA_FROM_DEVICE);
+	*bus_addr_l = dma_map_single(&pdev->dev, skb->data, rxbuf_size, DMA_FROM_DEVICE);
 #endif
 	/* *bus_addr_h = NULL;*/
 #endif /*CONFIG_PCI_HCI*/
