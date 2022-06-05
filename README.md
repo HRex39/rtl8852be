@@ -1,7 +1,7 @@
 # RTL8852BE
 ![github](https://img.shields.io/badge/Kernel<5.18-success-brightgreen.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
-![github](https://img.shields.io/badge/Kernel>=5.18-test--pending-red.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
-![github](https://img.shields.io/badge/-bluetooth_unsupported-lightgrey.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)  
+![github](https://img.shields.io/badge/Kernel>=5.18-unstable_but_works-blue.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
+![github](https://img.shields.io/badge/-bluetooth_unsupported-lightgrey.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)[FURTHER SUPPORT(MAYBE)](https://github.com/BluezTestBot/bluetooth-next/pull/878)  
 ## LTS
 ![github](https://img.shields.io/badge/-Ubuntu-555555.svg?style=for-the-badge&logo=ubuntu&logoColor=E95420)  
 Support CI/CD based on Github-hosted runners: Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04.  
@@ -23,20 +23,24 @@ bc
 ```
 ## Build(for kernel < 5.18)[stable]
 ```
-Turn off your Security Boot in BIOS
+#Turn off your Security Boot in BIOS
 
 git clone https://github.com/HRex39/rtl8852be.git
+cd rtl8852be
 make -j8
 sudo make install
+sudo modprobe 8852be
 ```
 
-## Build(for kernel >= 5.18)[pending]
+## Build(for kernel >= 5.18)[test-pending]
 ```
-Turn off your Security Boot in BIOS
+#Turn off your Security Boot in BIOS
 
 git clone https://github.com/HRex39/rtl8852be.git -b dev
+cd rtl8852be
 make -j8
 sudo make install
+sudo modprobe 8852be
 ```
 
 ## WHAT IS LINUX?
