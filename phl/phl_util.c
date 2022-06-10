@@ -58,7 +58,7 @@ u8 pq_pop(void *d, struct phl_queue *q, _os_list **obj, u8 pos, enum lock_type t
 	_os_spinlockfg sp_flags = 0;
 
 	(*obj) = NULL;
-	_os_spinlock(d, &q->lock, type, &sp_flags);
+	_os_spinlock(d, &q->lock, _irq, &sp_flags);
 	if(!list_empty(&q->queue) && (q->cnt > 0)) {
 		if(pos == _first)
 			(*obj) = _get_next(&q->queue);
@@ -67,7 +67,7 @@ u8 pq_pop(void *d, struct phl_queue *q, _os_list **obj, u8 pos, enum lock_type t
 		list_del(*obj);
 		q->cnt--;
 	}
-	_os_spinunlock(d, &q->lock, type, &sp_flags);
+	_os_spinunlock(d, &q->lock, _irq, &sp_flags);
 
 	return ((*obj) == NULL || (*obj) == &q->queue) ? (false) : (true);
 }
