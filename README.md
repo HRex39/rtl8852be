@@ -1,7 +1,8 @@
 # RTL8852BE
 ![github](https://img.shields.io/badge/Kernel<5.18-success-brightgreen.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
 ![github](https://img.shields.io/badge/Kernel>=5.18-unstable_but_works-blue.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
-![github](https://img.shields.io/badge/-bluetooth_unsupported-lightgrey.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)[FURTHER SUPPORT(MAYBE)](https://github.com/BluezTestBot/bluetooth-next/pull/878)  
+![github](https://img.shields.io/badge/-bluetooth_partly_supported(just_for_kernel5.15)-yellow.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)**See Here:[Hrex39/rtl8852be_bt](https://github.com/HRex39/rtl8852be_bt).**  
+  
 **For more detailed and elegant solution, You can also view [lwfinger/rtw8852be](https://github.com/lwfinger/rtw8852be).** 
 ## LTS
 ![github](https://img.shields.io/badge/-Ubuntu-555555.svg?style=for-the-badge&logo=ubuntu&logoColor=E95420)  
