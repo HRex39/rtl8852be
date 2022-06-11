@@ -390,8 +390,10 @@ bool rtw_phl_btc_send_cmd(struct rtw_phl_com_t *phl_com,
 		SET_MSG_EVT_ID_FIELD(msg.msg_id,
 			MSG_EVT_BTC_FWEVNT);
 		break;
+        case BTC_HMSG_BT_LINK_CHG:
+                return false;
 	default:
-		PHL_ERR("%s: Unknown msg !\n", __func__);
+		PHL_ERR("%s: Unknown msg %d !\n", __func__, ev_id);
 		return false;
 	}
 
