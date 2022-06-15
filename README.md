@@ -1,14 +1,13 @@
 # RTL8852BE
 ![github](https://img.shields.io/badge/Kernel<5.18-success-brightgreen.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
 ![github](https://img.shields.io/badge/Kernel>=5.18-unstable_but_works-blue.svg?style=for-the-badge&logo=linux&logoColor=ffffff)  
-![github](https://img.shields.io/badge/-bluetooth_partly_supported(just_for_kernel5.15)-yellow.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)**See Here:[HRex39/rtl8852be_bt](https://github.com/HRex39/rtl8852be_bt).**  
+![github](https://img.shields.io/badge/-bluetooth_partly_supported-blue.svg?style=for-the-badge&logo=bluetooth&logoColor=ffffff)**See Here:[HRex39/rtl8852be_bt](https://github.com/HRex39/rtl8852be_bt).**  
   
 **For more detailed and elegant solution, You can also view [lwfinger/rtw8852be](https://github.com/lwfinger/rtw8852be).** 
 ## LTS
 ![github](https://img.shields.io/badge/-Ubuntu-555555.svg?style=for-the-badge&logo=ubuntu&logoColor=E95420)  
 Support CI/CD based on Github-hosted runners: Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04.  
-Especially for Arch Linux, You can test for yourself or refer to issues.  
-💀:the dev is overwhelmed.  
+  
 ## Unstable
 ![github](https://img.shields.io/badge/-Debian-555555.svg?style=for-the-badge&logo=debian)
 ![github](https://img.shields.io/badge/-Centos-555555.svg?style=for-the-badge&logo=centos)
