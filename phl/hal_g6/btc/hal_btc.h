@@ -141,10 +141,10 @@ struct btc_t;
 
 #define run_rsn(r) \
 	(hal_mem_cmp(btc->hal, btc->dm.run_reason, r, _os_strlen((u8*)r))? 0:1)
-#define _rsn_cpy(dst, src) \
-	hal_mem_cpy(btc->hal, dst, src, BTC_RSN_MAXLEN)
-#define _act_cpy(dst, src) \
-	hal_mem_cpy(btc->hal, dst, src, BTC_ACT_MAXLEN)
+#define _rsn_cpy(dst, src, len) \
+	hal_mem_cpy(btc->hal, dst, src, len)
+#define _act_cpy(dst, src, len) \
+	hal_mem_cpy(btc->hal, dst, src, len)
 
 #define _tdma_cmp(dst, src) \
 	hal_mem_cmp(btc->hal, dst, src, sizeof(struct fbtc_tdma))

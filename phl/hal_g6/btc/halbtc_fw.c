@@ -619,11 +619,13 @@ bool hal_btc_fw_set_policy(struct btc_t *btc, bool force_exec, u16 policy_type,
 {
 	struct btc_dm *dm = &btc->dm;
 	struct btc_ops *ops = btc->ops;
+	u32 len = _os_strlen((u8 *)action) + 1;
 
 	if (!ops || !ops->fw_cmd)
 		return false;
 
-	_act_cpy(dm->run_action, (char*)action);
+	len = (len < BTC_ACT_MAXLEN) ? len : BTC_ACT_MAXLEN;
+	_act_cpy(dm->run_action, (char*)action, len);
 	_update_dm_step(btc, action);
 	_update_dm_step(btc, id_to_str(BTC_STR_POLICY, (u32)policy_type));
 

@@ -701,9 +701,11 @@ void _run_coex(struct btc_t *btc, const char *reason)
 	struct btc_bt_info *bt = &cx->bt;
 	struct btc_wl_role_info *wl_rinfo = &wl->role_info;
 	u8 mode = wl_rinfo->link_mode;
+	u32 len = _os_strlen((u8 *)reason) + 1;
 
 	PHL_INFO("[BTC], %s(): reason = %s, mode=%d\n", __func__, reason, mode);
-	_rsn_cpy(dm->run_reason, (char*)reason);
+	len = (len < BTC_RSN_MAXLEN) ? len : BTC_RSN_MAXLEN;
+	_rsn_cpy(dm->run_reason, (char*)reason, len);
 	_update_dm_step(btc, reason);
 
 #if BTC_CX_FW_OFFLOAD
@@ -1175,14 +1177,15 @@ static void _update_bt_psd(struct btc_t *btc, u8 *buf, u32 len)
 void _update_dm_step(struct btc_t *btc, const char *strin)
 {
 	struct btc_dm *dm = &btc->dm;
-	u32 store_index = 0;
+	u32 store_index = 0, len = _os_strlen((u8 *)strin) + 1;
 
 	dm->dm_step.cnt++;
 	if (dm->dm_step.cnt == 0)
 		dm->dm_step.cnt = 1;
 
 	store_index = ((dm->dm_step.cnt-1) % BTC_DM_MAXSTEP);
-	_rsn_cpy(dm->dm_step.step[store_index], (char*)strin);
+	len = (len < BTC_RSN_MAXLEN) ? len : BTC_RSN_MAXLEN;
+	_rsn_cpy(dm->dm_step.step[store_index], (char*)strin, len);
 }
 
 static void _update_bt_info(struct btc_t *btc, u8 *buf, u32 len)
@@ -1783,8 +1786,8 @@ bool hal_btc_init(struct btc_t *btc)
 	_reset_btc_var(btc, BTC_RESET_ALL);
 	_btmr_init(btc);
 
-	_rsn_cpy(btc->dm.run_reason, "None");
-	_act_cpy(btc->dm.run_action, "None");
+	_rsn_cpy(btc->dm.run_reason, "None", _os_strlen((u8 *)"None")+1);
+	_act_cpy(btc->dm.run_action, "None", _os_strlen((u8 *)"None")+1);
 
 	btc->hal->btc_vc.btc_ver = coex_ver;
 	btc->ops = &_btc_ops;
