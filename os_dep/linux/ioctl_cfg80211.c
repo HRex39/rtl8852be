@@ -1189,10 +1189,10 @@ check_bss:
 		#endif
 
 		#if defined(CPTCFG_VERSION) || LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
-	#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 19, 0)
-		roam_info.bssid = cur_network->network.MacAddress;
-	#else
+	#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0)
 		roam_info.links[0].bssid = cur_network->network.MacAddress;
+	#else
+		roam_info.bssid = cur_network->network.MacAddress;
 	#endif
 		roam_info.req_ie = pmlmepriv->assoc_req + sizeof(struct rtw_ieee80211_hdr_3addr) + 2;
 		roam_info.req_ie_len = pmlmepriv->assoc_req_len - sizeof(struct rtw_ieee80211_hdr_3addr) - 2;
@@ -6338,7 +6338,7 @@ static int cfg80211_rtw_set_monitor_channel(struct wiphy *wiphy
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
 static int cfg80211_rtw_get_channel(struct wiphy *wiphy,
 	struct wireless_dev *wdev,
-#if (LINUX_VERSION_CODE >=  KERNEL_VERSION(6, 0, 0))
+#if (LINUX_VERSION_CODE >=  KERNEL_VERSION(5, 19, 2))
 	unsigned int link_id,
 #endif
 	struct cfg80211_chan_def *chandef)
