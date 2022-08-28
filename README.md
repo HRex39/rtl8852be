@@ -16,12 +16,27 @@ Support CI/CD based on Github-hosted runners: Ubuntu 18.04, Ubuntu 20.04, Ubuntu
 ## Introduction
 This code is cloned from [TinkerBoard2/kernel](https://github.com/TinkerBoard2/kernel) and it's author is Rock_Shen (rock_shen@asus.com).  
 The default compilation option is i386_PC For Linux, you can also change the compilation options of MAKEFILE in line149.  
-## Prerequisites
+## Prerequisites (for Ubuntu/Debian)
 ```
 build-essential 
 linux-headers
 bc
 ```
+## Prerequisites (for Fedora)
+```
+kernel-headers
+kernel-devel-`uname -r`
+make
+automake
+cmake
+gcc
+gcc-c++
+bc
+```
+
+
+
+
 ## Build(for kernel < 5.18)
 ```
 #Turn off your Security Boot in BIOS
